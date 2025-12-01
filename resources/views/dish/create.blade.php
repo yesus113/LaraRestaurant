@@ -24,12 +24,15 @@
 
                     <label class="select">
                         <span class="label">Categoria</span>
-                        <select class="text-black">
-                            <option>Personal</option>
-                            <option>Business</option>
+                        <select class="text-black" name="category_id">
+                            @forelse ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name}}</option>
+                            @empty
+                                <option>No options</option>
+                            @endforelse
                         </select>
                     </label>
-                    <button class="btn btn-primary mt-4 w-full">Guardar</button>
+                    <button  type="submit" class="btn btn-primary mt-4 w-full">Guardar</button>
                 </form>
             </div>
         </div>
