@@ -22,10 +22,10 @@
             <tbody>
                 @forelse ($dishes as $dish)
                     <tr>
-                        <th>hola</th>
-                        <th>hola</th>
-                        <th>hola</th>
-                        <th>hola</th>
+                        <th>{{ $dish->name }}</th>
+                        <th>{{ $dish->description }}</th>
+                        <th>{{ $dish->price }}</th>
+                        <th>{{ $dish->category->name }}</th>
                     </tr>
                 @empty
                     <tr>
