@@ -1,10 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ ('Entradas') }}
+            {{ 'Entradas' }}
         </h2>
     </x-slot>
-    <button class=" glass border border-blue-600 text-white hover:bg-blue-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-3">
+    <button
+        class=" glass border border-blue-600 text-white hover:bg-green-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-3">
         <a href="{{ route('dish.create') }}">Agregar</a>
     </button>
 
@@ -17,6 +18,7 @@
                     <th>Descripcion</th>
                     <th>Precio</th>
                     <th>Categoria</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +28,20 @@
                         <th>{{ $dish->description }}</th>
                         <th>{{ $dish->price }}</th>
                         <th>{{ $dish->category->name }}</th>
+                        <th>
+                            <button
+                                class=" glass border border-blue-600 text-white hover:bg-yellow-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
+                                <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
+                            </button>
+                            <form method="POST" action="{{ route('dish.destroy', $dish->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" value="DELETE"
+                                    class=" glass border border-blue-600 text-white hover:bg-red-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
+                                    Borrar
+                                </button>
+                            </form>
+                        </th>
                     </tr>
                 @empty
                     <tr>

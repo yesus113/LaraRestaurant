@@ -39,7 +39,7 @@ class DishController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(dish $id)
+    public function show(Dish $id)
     {
         //todo
     }
@@ -47,24 +47,27 @@ class DishController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(dish $id)
+    public function edit(Dish $dish)
     {
-        //todo
+        $categories = Category::all();
+        return view('dish.edit', compact('dish', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(DishRequest $request, dish $id)
+    public function update(DishRequest $request, Dish $dish)
     {
-        //todo
+        $dish->update($request->validated());
+        return redirect()->route('dish.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(dish $id)
+    public function destroy(Dish $dish)
     {
-        //todo
+        $dish->delete();
+        return redirect()->route('dish.index');
     }
 }
