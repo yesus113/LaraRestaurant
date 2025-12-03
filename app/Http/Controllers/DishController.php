@@ -49,7 +49,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        $categories = Category::all();
+        $categories = Category::pluck('id', 'name');
         return view('dish.edit', compact('dish', 'categories'));
     }
 
