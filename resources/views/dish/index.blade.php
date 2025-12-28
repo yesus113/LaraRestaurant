@@ -25,20 +25,13 @@
                         <th>{{ $dish->price }}</th>
                         <th>{{ $dish->category->name }}</th>
                         <th>
-                            @component('components.buttons.button-edit')
-                                @section('ruta1')
-                                    <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
-                                @endsection
-                            @endcomponent
-                            
-                            @component('components.buttons.button-show')
-                            @endcomponent
 
-                            @component('components.buttons.button-delete')
-                                @section('route-del')
-                                    <form method="POST" action="{{ route('dish.destroy', $dish->id) }}">
-                                    @endsection
-                                @endcomponent
+                            <x-buttons.button-edit route="{{ route('dish.edit', $dish->id) }}" name="Editar" />
+
+                            <x-buttons.button-show />
+
+                            <x-buttons.button-delete action="{{ route('dish.destroy', $dish->id) }}" name="Borrar"/>
+
                         </th>
                     </tr>
                 @empty
