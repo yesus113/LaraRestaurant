@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -13,6 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+
         return view('category.index', compact('categories'));
     }
 
@@ -21,15 +23,18 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('category.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->validated());
+        return redirect()->route('categ.index');
     }
 
     /**
@@ -45,7 +50,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::pluck('id', 'name');
+        return view('category.edit', compact('categories'));
     }
 
     /**
@@ -53,7 +59,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $categories->update($request->validated());
+        return redirect()->route('categ.index');
     }
 
     /**
@@ -61,6 +68,7 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categories->delete();
+        return redirect()->route('categ.index');
     }
 }
