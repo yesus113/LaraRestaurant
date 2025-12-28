@@ -11,6 +11,18 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                 </div>
+
+                <a href="">
+                    <div class="card bg-base-100 w-96 shadow-sm">
+                        <figure class="px-10 pt-10">
+                            <img src="{{ asset('img/entrada.jpg') }}" alt="Entrada" class="rounded-xl" />
+                        </figure>
+                        <div class="card-body items-center text-center">
+                            <h2 class="card-title">Entradas</h2>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </div>
     </div>
