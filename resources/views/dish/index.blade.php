@@ -33,6 +33,10 @@
                                 class=" glass border border-blue-600 text-white hover:bg-yellow-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
                                 <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
                             </button>
+                            <button
+                                class=" glass border border-blue-600 text-white hover:bg-blue-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
+                                <a href="#">Show</a>
+                            </button>
                             <form method="POST" action="{{ route('dish.destroy', $dish->id) }}">
                                 @csrf
                                 @method('DELETE')
