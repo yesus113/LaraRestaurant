@@ -4,10 +4,11 @@
             {{ 'Entradas' }}
         </h2>
     </x-slot>
-    <button
-        class=" glass border border-blue-600 text-white hover:bg-green-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-3">
-        <a href="{{ route('dish.create') }}">Agregar</a>
-    </button>
+    @component('components.buttons.button-create')
+        @section('ruta')
+            <a href="{{ route('dish.create') }}">Agregar</a>
+        @endsection
+    @endcomponent
 
     <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
         <table class="table">
@@ -29,10 +30,11 @@
                         <th>{{ $dish->price }}</th>
                         <th>{{ $dish->category->name }}</th>
                         <th>
-                            <button
-                                class=" glass border border-blue-600 text-white hover:bg-yellow-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
-                                <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
-                            </button>
+                            @component('components.buttons.button-edit')
+                                @section('ruta1')
+                                    <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
+                                @endsection
+                            @endcomponent
                             <button
                                 class=" glass border border-blue-600 text-white hover:bg-blue-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
                                 <a href="#">Show</a>
