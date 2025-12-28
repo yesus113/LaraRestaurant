@@ -1,14 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ 'Entradas' }}
-        </h2>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> {{ 'Entradas' }}</h2>
     </x-slot>
-    @component('components.buttons.button-create')
-        @section('ruta')
-            <a href="{{ route('dish.create') }}">Agregar</a>
-        @endsection
-    @endcomponent
+
+    <x-buttons.button-create route="{{ route('dish.create') }}" name="Crear" />
 
     <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
         <table class="table">
@@ -34,8 +29,8 @@
                                 @section('ruta1')
                                     <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
                                 @endsection
-                                
                             @endcomponent
+                            
                             @component('components.buttons.button-show')
                             @endcomponent
 
