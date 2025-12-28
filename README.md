@@ -62,6 +62,10 @@ Move to your branch
 ```bash
 git checkout yourbranch
 ```
+add tags
+
+git tag v0.1 ,etc
+git push --tags
 
 
 
