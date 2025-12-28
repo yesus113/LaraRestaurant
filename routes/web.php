@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DishController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,6 +10,8 @@ Route::get('/', function () {
 });
 
 Route::resource('/dish', DishController::class)->names('dish');
+Route::resource('/category', CategoryController::class)->names('categ');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
