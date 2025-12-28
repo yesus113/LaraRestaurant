@@ -34,19 +34,16 @@
                                 @section('ruta1')
                                     <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
                                 @endsection
+                                
                             @endcomponent
-                            <button
-                                class=" glass border border-blue-600 text-white hover:bg-blue-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
-                                <a href="#">Show</a>
-                            </button>
-                            <form method="POST" action="{{ route('dish.destroy', $dish->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" value="DELETE"
-                                    class=" glass border border-blue-600 text-white hover:bg-red-600 hover:text-white font-medium px-4 py-2 rounded-md transition m-2">
-                                    Borrar
-                                </button>
-                            </form>
+                            @component('components.buttons.button-show')
+                            @endcomponent
+
+                            @component('components.buttons.button-delete')
+                                @section('route-del')
+                                    <form method="POST" action="{{ route('dish.destroy', $dish->id) }}">
+                                    @endsection
+                                @endcomponent
                         </th>
                     </tr>
                 @empty
