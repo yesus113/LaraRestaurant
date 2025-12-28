@@ -12,16 +12,52 @@
                     {{ __("You're logged in!") }}
                 </div>
 
-                <a href="">
-                    <div class="card bg-base-100 w-96 shadow-sm">
-                        <figure class="px-10 pt-10">
-                            <img src="{{ asset('img/entrada.jpg') }}" alt="Entrada" class="rounded-xl" />
-                        </figure>
-                        <div class="card-body items-center text-center">
-                            <h2 class="card-title">Entradas</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                    <a href="">
+                        <div class="card p-1 rounded h-72 overflow-hidden">
+                            <figure class="px-10 pt-10">
+                                <img src="{{ asset('img/entrada/entrada.jpg') }}" alt="Entrada" class="rounded-xl" />
+                            </figure>
+                            <div class="card-body items-center text-center">
+                                <h2 class="card-title">Entradas</h2>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+
+                    <a href="">
+                        <div class="card p-1 rounded h-72 overflow-hidden">
+                            <figure class="px-10 pt-10">
+                                <img src="{{ asset('img/pf/picaña.jpg') }}" alt="Entrada" class="rounded-xl" />
+                            </figure>
+                            <div class="card-body items-center text-center">
+                                <h2 class="card-title">Platillos fuertes</h2>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="">
+                        <div class="card p-1 rounded h-72 overflow-hidden">
+                            <figure class="px-10 pt-10">
+                                <img src="{{ asset('img/postre/cupcakes-de-chocolate.jpg') }}" alt="Entrada" class="rounded-xl" />
+                            </figure>
+                            <div class="card-body items-center text-center">
+                                <h2 class="card-title">Postres</h2>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="">
+                        <div class="card p-1 rounded h-72 overflow-hidden">
+                            <figure class="px-10 pt-10">
+                                <img src="{{ asset('img/bebida/bebidas-naturales.jpg') }}" alt="Entrada" class="rounded-xl" />
+                            </figure>
+                            <div class="card-body items-center text-center">
+                                <h2 class="card-title">Bebidas</h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
             </div>
         </div>
