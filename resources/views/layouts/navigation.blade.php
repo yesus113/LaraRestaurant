@@ -17,7 +17,7 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('dish.index')" :active="request()->routeIs('dish.index')">
-                        {{ 'Dishes' }}
+                        {{ 'Productos' }}
                     </x-nav-link>
                 </div>
             </div>
@@ -76,7 +76,7 @@
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('dish.index')" :active="request()->routeIs('dish.index')">
-                {{ 'Dishes' }}
+                {{ 'Productos' }}
             </x-responsive-nav-link>
         </div>
 
