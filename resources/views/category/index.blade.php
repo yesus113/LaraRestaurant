@@ -2,11 +2,8 @@
     <x-slot name="header">
         <h1>Categorias</h1>
     </x-slot>
-    @component('components.buttons.button-create')
-        @section('ruta')
-            <a href="{{ route('categ.create') }}">Agregar</a>
-        @endsection
-    @endcomponent
+    <x-buttons.button-create route="{{ route('categ.create') }}" name="Crear" />
+
 
     <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
         <table class="table">
@@ -17,20 +14,15 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($categories as $dish)
+                @forelse ($categories as $categ)
                     <tr>
-                        <th>{{ $dish->name }}</th>
+                        <th>{{ $categ->name }}</th>
                         <th>
-                            @component('components.buttons.button-edit')
-                                @section('ruta1')
-                                    <a href="{{ route('dish.edit', $dish->id) }}">Editar</a>
-                                @endsection
-                            @endcomponent
-                            @component('components.buttons.button-delete')
-                                @section('route-del')
-                                    <form method="POST" action="{{ route('dish.destroy', $dish->id) }}">
-                                    @endsection
-                                @endcomponent
+                            <x-buttons.button-edit route="{{ route('categ.edit', $categ->id) }}" name="Editar" />
+
+                            <x-buttons.button-show />
+
+                            <x-buttons.button-delete action="{{ route('categ.destroy', $categ->id) }}" name="Borrar" />
                         </th>
                     </tr>
                 @empty
