@@ -34,7 +34,9 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->validated());
-        return redirect()->route('categ.index');
+        return redirect()
+        ->route('categ.index')
+        ->with('succes', 'Categoria agregada correctamente');
     }
 
     /**
@@ -48,27 +50,27 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        $categories = Category::pluck('id', 'name');
-        return view('category.edit', compact('categories'));
+        //$categories = Category::pluck('id', 'name');
+        return view('category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $categories->update($request->validated());
+        $category ->update($request->validated());
         return redirect()->route('categ.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        $categories->delete();
+        $category->delete();
         return redirect()->route('categ.index');
     }
 }
