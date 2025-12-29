@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DishRequest;
 use App\Models\Category;
 use App\Models\Dish;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request) //GET category
     {
-       $dishes = Dish::all();
+       $query = Dish::with('category'); //Dishes con una category
+       if ($request->filled('category')){ //si en la request existe la category a filtrar bro
+            $query->whereHas('category', function ($q) use ($request){ //relationship
+                $q->where('name', $request->category);
+            });
+       }
+       $dishes = $query->get(); //execute
+
         return view('dish.index', compact('dishes'));
     }
 
@@ -70,4 +78,5 @@ class DishController extends Controller
         $dish->delete();
         return redirect()->route('dish.index');
     }
+
 }
