@@ -14,9 +14,9 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-                    <a href="">
+                    <a href="{{ route('dish.index', ['category' => 'entrada']) }}">
                         <div class="card p-1 rounded h-72 overflow-hidden">
-                            <figure class="px-10 pt-10">
+                            <figure class="px-4 pt-4 h-40">
                                 <img src="{{ asset('img/entrada/entrada.jpg') }}" alt="Entrada" class="rounded-xl" />
                             </figure>
                             <div class="card-body items-center text-center">
@@ -25,21 +25,24 @@
                         </div>
                     </a>
 
-                    <a href="">
+                    <a href="{{ route('dish.index', ['category' => 'platillo fuerte']) }}">
                         <div class="card p-1 rounded h-72 overflow-hidden">
-                            <figure class="px-10 pt-10">
-                                <img src="{{ asset('img/pf/picaña.jpg') }}" alt="Entrada" class="rounded-xl" />
+                            <figure class="px-4 pt-4 h-40">
+                                <img src="{{ asset('img/pf/picaña.jpg') }}" alt="Platillo Fuerte"
+                                    class="rounded-xl " />
                             </figure>
+
                             <div class="card-body items-center text-center">
-                                <h2 class="card-title">Platillos fuertes</h2>
+                                <h2 class="card-title">Platillos Fuerte</h2>
                             </div>
                         </div>
                     </a>
 
-                    <a href="">
+                    <a href="{{ route('dish.index', ['category' => 'postre']) }}">
                         <div class="card p-1 rounded h-72 overflow-hidden">
-                            <figure class="px-10 pt-10">
-                                <img src="{{ asset('img/postre/cupcakes-de-chocolate.jpg') }}" alt="Entrada" class="rounded-xl" />
+                            <figure class="px-4 pt-4 h-40">
+                                <img src="{{ asset('img/postre/cupcakes-de-chocolate.jpg') }}" alt="Postres"
+                                    class="rounded-xl" />
                             </figure>
                             <div class="card-body items-center text-center">
                                 <h2 class="card-title">Postres</h2>
@@ -47,10 +50,11 @@
                         </div>
                     </a>
 
-                    <a href="">
+                    <a href="{{ route('dish.index', ['category' => 'bebida']) }}">
                         <div class="card p-1 rounded h-72 overflow-hidden">
-                            <figure class="px-10 pt-10">
-                                <img src="{{ asset('img/bebida/bebidas-naturales.jpg') }}" alt="Entrada" class="rounded-xl" />
+                            <figure class="px-4 pt-4 h-40">
+                                <img src="{{ asset('img/bebida/bebidas-naturales.jpg') }}" alt="Bebidas"
+                                    class="rounded-xl" />
                             </figure>
                             <div class="card-body items-center text-center">
                                 <h2 class="card-title">Bebidas</h2>
