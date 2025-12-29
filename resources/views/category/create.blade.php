@@ -12,7 +12,18 @@
                         <input class="text-black" type="text" placeholder="Enchiladas Verde" name="name"
                             value="{{ old('name') }}" />
                     </label>
-                    <button type="submit" class="btn btn-primary mt-4 w-full">Guardar</button>
+                    <button type="submit" class="btn btn-outline btn-secondary mt-4 w-full">Guardar</button>
+
+                    @if ($errors->any())
+                        <div class="alert alert-error mb-4">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>• {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                 </form>
             </div>
         </div>
