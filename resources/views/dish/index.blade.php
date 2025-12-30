@@ -22,7 +22,7 @@
                     <tr>
                         <th>{{ $dish->name }}</th>
                         <th>{{ $dish->description }}</th>
-                        <th>{{ $dish->price }}</th>
+                        <th>${{ $dish->price }}</th>
                         <th>{{ $dish->category->name }}</th>
                         <th>
 

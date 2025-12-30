@@ -28,7 +28,7 @@
                     <div>
                         <label class="input m-2">
                         <span class="label">Precio</span>
-                        <input class="text-black" type="text" placeholder="100" name="price"
+                        <input class="text-black" type="text" placeholder="$100" name="price"
                             value="{{ old('price') }}" />
                     </label>
                     <x-input-error class="mt-2" :messages="$errors->get('price')" />
