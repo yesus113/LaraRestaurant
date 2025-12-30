@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2>Edit</h2>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> {{ 'Editar' }}</h2>
     </x-slot>
 
     <div class="flex justify-center mt-10">
@@ -9,23 +9,34 @@
                 <form action="{{ route('dish.update', $dish->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
-                    <label class="input m-2">
-                        <span class="label">Nombre</span>
-                        <input class="text-black" type="text" placeholder="Enchiladas" name="name"
-                            value="{{ old('name', $dish->name) }}" />
-                    </label>
 
-                    <label class="input m-2">
-                        <span class="label">Descripcion</span>
-                        <input class="text-black" type="text" placeholder="Ingredientes" name="description"
-                            value="{{ old('description', $dish->description) }}" />
-                    </label>
+                    <div>
+                        <label class="input m-2">
+                            <span class="label">Nombre</span>
+                            <input class="text-black" type="text" placeholder="Enchiladas" name="name"
+                                value="{{ old('name', $dish->name) }}" />
+                        </label>
+                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                    </div>
 
-                    <label class="input m-2">
-                        <span class="label">Precio</span>
-                        <input class="text-black" type="text" placeholder="100" name="price"
-                            value="{{ old('price', $dish->price) }}" />
-                    </label>
+                    <div>
+                        <label class="input m-2">
+                            <span class="label">Descripcion</span>
+                            <input class="text-black" type="text" placeholder="Ingredientes" name="description"
+                                value="{{ old('description', $dish->description) }}" />
+                        </label>
+                        <x-input-error class="mt-2" :messages="$errors->get('description')" />
+                    </div>
+
+                    <div>
+                        <label class="input m-2">
+                            <span class="label">Precio</span>
+                            <input class="text-black" type="text" placeholder="100" name="price"
+                                value="{{ old('price', $dish->price) }}" />
+                        </label>
+                        <x-input-error class="mt-2" :messages="$errors->get('price')" />
+                    </div>
+
 
                     <label class="select">
                         <span class="label">Categoria</span>
