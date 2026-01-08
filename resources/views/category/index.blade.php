@@ -2,6 +2,9 @@
     <x-slot name="header">
         <h1>Categorias</h1>
     </x-slot>
+
+    <x-alerts.messages/>
+
     <x-buttons.button-create route="{{ route('categ.create') }}" name="Crear" />
 
     <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
