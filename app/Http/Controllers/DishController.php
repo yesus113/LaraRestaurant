@@ -41,7 +41,7 @@ class DishController extends Controller
     public function store(DishRequest $request)
     {
         Dish::create($request->validated());
-        return redirect()->route('dish.index');
+        return redirect()->route('dish.index')->with('success', 'Dish created');
     }
 
     /**
@@ -67,7 +67,7 @@ class DishController extends Controller
     public function update(DishRequest $request, Dish $dish)
     {
         $dish->update($request->validated());
-        return redirect()->route('dish.index');
+        return redirect()->route('dish.index')->with('success', 'Dish updated');
     }
 
     /**
@@ -76,7 +76,7 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $dish->delete();
-        return redirect()->route('dish.index');
+        return redirect()->route('dish.index')->with('danger', 'Dish created');
     }
 
 }
