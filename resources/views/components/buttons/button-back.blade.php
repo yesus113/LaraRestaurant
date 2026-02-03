@@ -1,7 +1,7 @@
 @props(['route', 'name' => 'empty'])
 
 <a href="{{ $route }}"
-   class="bg-white text-center w-40 rounded-2xl h-10 relative text-black text-xl font-semibold group flex items-center justify-center m-3">
+   class="bg-white text-center w-40 rounded-2xl h-10 relative text-black text-xl font-semibold group flex items-center justify-center">
 
     <div {{ $attributes->merge(['class' => 'rounded-xl h-8 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[150px] z-10 duration-500']) }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="25px" width="25px">
