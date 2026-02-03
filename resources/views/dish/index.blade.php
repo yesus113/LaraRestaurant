@@ -3,9 +3,9 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> {{ 'Products' }}</h2>
     </x-slot>
 
-    <x-alerts.messages/> 
+    <x-alerts.messages/>
 
-    <x-buttons.button-create route="{{ route('dish.create') }}" name="Crear" />
+    <x-buttons.button-back route="{{ route('dashboard') }}" name="Volvel" class="bg-blue-400  "/>
 
     <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
         <table class="table">
@@ -47,4 +47,5 @@
             </tbody>
         </table>
     </div>
+    <x-buttons.button-create route="{{ route('dish.create') }}" name="Crear" />
 </x-app-layout>

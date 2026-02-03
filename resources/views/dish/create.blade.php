@@ -2,6 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> {{ 'Crear' }}</h2>
     </x-slot>
+    <x-buttons.button-back route="{{ route('dish.index') }}" name="Volvel"  class="bg-green-400 mx-auto block"/>
     <div class="flex justify-center mt-10">
         <div class="card w-96 bg-base-100 shadow-xl">
             <div class="card-body">
