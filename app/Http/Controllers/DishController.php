@@ -1,27 +1,41 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Http\Requests\DishRequest;
 use App\Models\Category;
 use App\Models\Dish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class DishController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource or filter by category.
      */
-    public function index(Request $request) //GET category
-    {
-       $query = Dish::with('category'); //Dishes con una category
-       if ($request->filled('category')){ //si en la request existe la category a filtrar bro
-            $query->whereHas('category', function ($q) use ($request){ //relationship
-                $q->where('name', $request->category);
-            });
-       }
-       $dishes = $query->get(); //execute
 
-        return view('dish.index', compact('dishes'));
+public function index(Request $request)
+{
+    $categories = Category::all();
+
+    // 2. Revisamos si el select mandó un 'category_id'
+    $categoryId = $request->query('category_id');
+
+    // 3. Si hay un ID seleccionado, usamos TU MÉTODO
+    if ($categoryId) {
+        $dishes = $this->filterByCateg($categoryId);
+    } else {
+        //all
+        $dishes = Dish::with('category')->get();
     }
+
+    return view('dish.index', compact('dishes', 'categories'));
+}
+
+public function filterByCateg($categId)
+{
+    return Dish::where('category_id', $categId)->with('category')->get();
+}
 
     /**
      * Show the form for creating a new resource.
@@ -48,9 +62,8 @@ class DishController extends Controller
     public function show(Dish $dish)
     {
         // Cargamos la relación 'category' para que esté disponible en la vista
-    $dish->load('category');
-
-    return view('dish.show', compact('dish'));
+        $dish->load('category');
+        return view('dish.show', compact('dish'));
     }
 
     /**
@@ -79,5 +92,4 @@ class DishController extends Controller
         $dish->delete();
         return redirect()->route('dish.index')->with('danger', 'Dish created');
     }
-
 }
