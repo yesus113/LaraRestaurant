@@ -9,9 +9,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//dish
+//? DISH
 Route::resource('/dish', DishController::class)->names('dish');
-//Route::get('/dish/{category}', [DishController::class, 'filterBy'])->name('dish.filter');
+//Route::get('/dish/category/{categId}', [DishController::class, 'filterByCateg'])->name('dish.filter');
 //categ
 Route::resource('/category', CategoryController::class)->names('categ');
 
