@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Requests\DishRequest;
 use App\Models\Category;
 use App\Models\Dish;
@@ -47,9 +45,12 @@ class DishController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dish $id)
+    public function show(Dish $dish)
     {
-        //todo
+        // Cargamos la relación 'category' para que esté disponible en la vista
+    $dish->load('category');
+
+    return view('dish.show', compact('dish'));
     }
 
     /**
