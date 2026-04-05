@@ -30,7 +30,7 @@
                         <td>
                             <div class="flex items-center justify-center gap-2">
                                 <x-buttons.button-edit route="{{ route('dish.edit', $dish->id) }}" name="Editar" />
-                                <x-buttons.button-show />
+                                <x-buttons.button-show route="{{ route('dish.show', $dish->id) }}" name="Detalle"/>
                                 <x-buttons.button-delete action="{{ route('dish.destroy', $dish->id) }}"
                                     name="Borrar" />
                             </div>
