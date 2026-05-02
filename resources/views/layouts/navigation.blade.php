@@ -23,6 +23,9 @@
                     <x-nav-link :href="route('categ.index')" :active="request()->routeIs('categ.index')">
                         {{ 'Categorias' }}
                     </x-nav-link>
+                    <x-nav-link :href="route('dayMenu.index')" :active="request()->routeIs('dayMenu.index')">
+                        {{ 'Platillo del Dia' }}
+                    </x-nav-link>
                 </div>
             </div>
             <div class="-me-2 flex items-center">
