@@ -9,6 +9,37 @@
     <div class="overflow-x-auto rounded-lg border border-base-300 shadow-sm p-6">
         <x-buttons.button-back route="{{ route('dashboard') }}" name="Volvel" class="bg-blue-400" />
         <br>
+
+        <div class="flex justify-end mb-4">
+            <form action="{{ route('dish.index') }}" method="GET" class="flex items-center gap-2">
+                <label for="category_id" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Filtrar por:
+                </label>
+
+                <select name="category_id" id="category_id" onchange="this.form.submit()"
+                    class="select select-bordered select-sm w-48
+                   bg-white dark:bg-slate-800
+                   text-gray-900 dark:text-gray-100">
+
+                    <option value="" class="bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100">
+                        Todas las categorías
+                    </option>
+
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}"
+                            {{ request('category_id') == $category->id ? 'selected' : '' }}
+                            class="bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100">
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+
+                @if (request('category_id'))
+                    <a href="{{ route('dish.index') }}" class="btn btn-ghost btn-xs text-error">Limpiar</a>
+                @endif
+            </form>
+        </div>
+        <br>
         <table class="table table-sm md:table-md table-zebra w-full">
             <thead class="bg-base-200">
                 <tr>
@@ -31,7 +62,7 @@
                         <td>
                             <div class="flex items-center justify-center gap-2">
                                 <x-buttons.button-edit route="{{ route('dish.edit', $dish->id) }}" name="Editar" />
-                                <x-buttons.button-show />
+                                <x-buttons.button-show route="{{ route('dish.show', $dish->id) }}" name="Detalle" />
                                 <x-buttons.button-delete action="{{ route('dish.destroy', $dish->id) }}"
                                     name="Borrar" />
                             </div>
