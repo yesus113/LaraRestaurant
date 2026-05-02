@@ -12,30 +12,8 @@
                 </div>
 
                 <!-- Options-->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <x-dashboard.a-card
-                        route="{{ route('dish.index', ['category' => 'entrada']) }}"
-                        imgUrl="{{ asset('img/entrada/entrada.jpg') }}"
-                        alt="Entrada"
-                        name="Entrada"/>
-
-                    <x-dashboard.a-card
-                        route="{{ route('dish.index', ['category' => 'platillo fuerte']) }}"
-                        imgUrl="{{ asset('img/pf/picaña.jpg') }}"
-                        alt="Platillo Fuerte"
-                        name="Platillo Fuerte"/>
-
-                    <x-dashboard.a-card
-                        route="{{ route('dish.index', ['category' => 'postre']) }}"
-                        imgUrl="{{ asset('img/postre/cupcakes-de-chocolate.jpg') }}"
-                        alt="Postre"
-                        name="Postre"/>
-
-                    <x-dashboard.a-card
-                        route="{{ route('dish.index', ['category' => 'bebida']) }}"
-                        imgUrl="{{ asset('img/bebida/bebidas-naturales.jpg') }}"
-                        alt="Bebida"
-                        name="Bebida"/>
+                <div>
+                    
                 </div>
             </div>
         </div>
