@@ -66,14 +66,3 @@ add tags
 
 git tag v0.1 ,etc
 git push --tags
-
-
-
-
-
-
-
-
-Arranca pa la mierda adrian
-
-

@@ -12,20 +12,30 @@
 
         <div class="flex justify-end mb-4">
             <form action="{{ route('dish.index') }}" method="GET" class="flex items-center gap-2">
-                <label for="category_id" class="text-sm font-medium">Filtrar por:</label>
+                <label for="category_id" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Filtrar por:
+                </label>
+
                 <select name="category_id" id="category_id" onchange="this.form.submit()"
-                    class="select select-bordered select-sm w-48">
-                    <option value="">Todas las categorías</option>
+                    class="select select-bordered select-sm w-48
+                   bg-white dark:bg-slate-800
+                   text-gray-900 dark:text-gray-100">
+
+                    <option value="" class="bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100">
+                        Todas las categorías
+                    </option>
+
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}"
-                            {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ request('category_id') == $category->id ? 'selected' : '' }}
+                            class="bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100">
                             {{ $category->name }}
                         </option>
                     @endforeach
                 </select>
 
                 @if (request('category_id'))
-                    <a href="{{ route('dish.index') }}" class="btn btn-ghost btn-xs">Limpiar</a>
+                    <a href="{{ route('dish.index') }}" class="btn btn-ghost btn-xs text-error">Limpiar</a>
                 @endif
             </form>
         </div>
