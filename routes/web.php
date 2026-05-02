@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\dayMenuController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,7 @@ Route::resource('/dish', DishController::class)->names('dish');
 //categ
 Route::resource('/category', CategoryController::class)->names('categ');
 
+Route::resource('/dayMenu', dayMenuController::class)->names('dayMenu');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
