@@ -5,7 +5,7 @@
 
     <x-alerts.messages />
 
-   
+
     <div class="overflow-x-auto rounded-lg border border-base-300 shadow-sm p-6">
         <x-buttons.button-back route="{{ route('dashboard') }}" name="Volvel" class="bg-blue-400" />
         <br>
@@ -17,7 +17,7 @@
                 </label>
 
                 <select name="category_id" id="category_id" onchange="this.form.submit()"
-                    class="select select-bordered select-sm w-48
+                    class="select select-bordered w-52
                    bg-white dark:bg-slate-800
                    text-gray-900 dark:text-gray-100">
 
