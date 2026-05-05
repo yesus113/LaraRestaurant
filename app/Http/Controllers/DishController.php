@@ -17,17 +17,20 @@ class DishController extends Controller
 public function index(Request $request)
 {
     $categories = Category::all();
-
-    // 2. Revisamos si el select mandó un 'category_id'
     $categoryId = $request->query('category_id');
+    $search = trim((string) $request->query('search', ''));
 
-    // 3. Si hay un ID seleccionado, usamos TU MÉTODO
-    if ($categoryId) {
-        $dishes = $this->filterByCateg($categoryId);
-    } else {
-        //all
-        $dishes = Dish::with('category')->get();
-    }
+    $dishes = Dish::with('category')
+        ->when($categoryId, fn ($query) => $query->where('category_id', $categoryId))
+        ->when($search !== '', function ($query) use ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhereHas('category', fn ($query) => $query->where('name', 'like', "%{$search}%"));
+            });
+        })
+        ->latest()
+        ->get();
 
     return view('dish.index', compact('dishes', 'categories'));
 }

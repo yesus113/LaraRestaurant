@@ -20,21 +20,35 @@
 
     @php
         $selectedCategory = $categories->firstWhere('id', (int) request('category_id'));
+        $hasFilters = request()->filled('category_id') || request()->filled('search');
     @endphp
 
     <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="mb-6 flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
             <a href="{{ route('dashboard') }}" class="btn btn-ghost w-full justify-start text-slate-700 sm:w-auto dark:text-slate-200">
                 <span aria-hidden="true">&larr;</span>
                 Volver al dashboard
             </a>
 
-            <form action="{{ route('dish.index') }}" method="GET" class="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <label for="category_id" class="text-sm font-semibold text-slate-700 dark:text-slate-200">
-                    Filtrar por categoria
-                </label>
+            <form action="{{ route('dish.index') }}" method="GET" class="grid gap-3 lg:grid-cols-[minmax(260px,1fr)_auto_auto] lg:items-end">
+                <div>
+                    <label for="search" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                        Buscar platillo
+                    </label>
+                    <input
+                        id="search"
+                        type="search"
+                        name="search"
+                        value="{{ request('search') }}"
+                        placeholder="Nombre, descripcion o categoria"
+                        class="input input-bordered w-full bg-white text-slate-900 placeholder:text-slate-400 shadow-sm dark:bg-slate-800 dark:text-slate-100"
+                    />
+                </div>
 
-                <div class="flex gap-2">
+                <div>
+                    <label for="category_id" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                        Categoria
+                    </label>
                     <select
                         name="category_id"
                         id="category_id"
@@ -49,11 +63,17 @@
                             </option>
                         @endforeach
                     </select>
+                </div>
 
-                    @if (request('category_id'))
-                        <a href="{{ route('dish.index') }}" class="btn btn-outline btn-error">
-                            Limpiar
-                        </a>
+                <div class="flex gap-2">
+                    <button type="submit" class="btn btn-success">
+                        Buscar
+                    </button>
+
+                    @if ($hasFilters)
+                    <a href="{{ route('dish.index') }}" class="btn btn-outline btn-error">
+                        Limpiar
+                    </a>
                     @endif
                 </div>
             </form>
@@ -66,9 +86,9 @@
             </div>
 
             <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Filtro activo</p>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Busqueda</p>
                 <p class="mt-2 truncate text-lg font-bold text-slate-900 dark:text-white">
-                    {{ $selectedCategory->name ?? 'Todas las categorias' }}
+                    {{ request('search') ?: 'Sin busqueda' }}
                 </p>
             </div>
 
@@ -133,7 +153,7 @@
                     @empty
                         <tr>
                             <td colspan="5" class="py-12 text-center text-slate-500 dark:text-slate-400">
-                                No hay platillos registrados todavia.
+                                No hay platillos registrados.
                             </td>
                         </tr>
                     @endforelse
