@@ -10,9 +10,10 @@ Route::get('/', function () {
 });
 
 //? DISH
+Route::middleware('auth')->group(function () {
 Route::resource('/dish', DishController::class)->names('dish');
-//Route::get('/dish/category/{categId}', [DishController::class, 'filterByCateg'])->name('dish.filter');
-//categ
+});
+//? CATEGORY
 Route::resource('/category', CategoryController::class)->names('categ');
 
 
