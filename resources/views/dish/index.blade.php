@@ -5,7 +5,6 @@
 
     <x-alerts.messages />
 
-
     <div class="overflow-x-auto rounded-lg border border-base-300 shadow-sm p-6">
         <x-buttons.button-back route="{{ route('dashboard') }}" name="Volvel" class="bg-blue-400" />
         <br>
