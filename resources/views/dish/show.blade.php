@@ -15,7 +15,7 @@
     @endphp
 
     <section class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
-        
+
         <article class="card overflow-hidden bg-base-100 shadow-xl ring-1 ring-base-300 lg:card-side">
             <figure class="relative min-h-72 bg-base-200 lg:w-5/12">
                 <img
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="card-actions flex-col gap-3 sm:flex-row sm:justify-end">
-                    <a href="{{ route('dish.edit', $dish->id) }}" class="btn btn-primary w-full sm:w-auto">
+                    <a href="{{ route('dish.edit', $dish->id) }}" class="btn btn-outline w-full sm:w-auto">
                         Editar platillo
                     </a>
                     <a href="{{ route('dish.index') }}" class="btn btn-outline w-full sm:w-auto">
